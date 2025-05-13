@@ -4,7 +4,7 @@
     flex-direction: row;
     align-items: center;
     width: 100vw; 
-    height: 120px;   
+    height: 115px;   
     color: #FFFFFF;       
     margin: 0;              
     padding: 1rem 2rem;     
@@ -44,7 +44,7 @@
 }
   .nav-right img {
     padding: 0 0 30px 40px;
-    height: 110px;
-    width: 120px;
+    height: 100px;
+    width: 108px;
     cursor: pointer;
 }
