@@ -1,15 +1,15 @@
 import React from 'react'
-import './Navbar.css'
+import './Header.css'
 import poke from '../assets/poke.png'
-const Navbar = () => {
+const Header = () => {
   return (
-    <div className='navbar'>
-        <div className='nav-container'>
-        <div className="nav-bottom">
+    <div className='header'>
+        <div className='head-container'>
+        <div className="head-bottom">
             <h1>Pokémon Team Builder</h1>
             <span>Power up your crew and dominate the battlefield!</span>
         </div>
-        <div className="nav-right">
+        <div className="head-right">
         <a href="https://www.pokemon.com/us"> <img src={poke} alt="pokeball.img"/> </a>
         </div>
     </div>
@@ -17,4 +17,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default Header

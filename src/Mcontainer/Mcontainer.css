@@ -1,0 +1,213 @@
+:root {
+  --card-bg: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --text-primary: #333333;
+}
+
+.main-container {
+  margin-top: 60px;
+  padding: 32px 24px;
+  background-color: rgba(249, 249, 249, 0.75);
+  font-family: Arial, sans-serif;
+  border-radius: 10px;
+}
+
+.container-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.container-grid h2 {
+  margin-top: 30px;
+  font-size: 30px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.search-filter {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 768px) {
+  .search-filter {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .search-bar {
+    margin-top: 0;
+  }
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: white;
+  padding: 0 0 0 15px;
+  margin-top: 20px;
+}
+
+.search-bar img {
+  width: 20px;
+  height: 20px;
+}
+
+.search-bar input {
+  padding: 10px 14px;
+  font-size: 16px;
+  border: none;
+  width: 200px;
+  outline: none;
+  background-color: transparent;
+}
+
+.filter-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter {
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.fire,
+.grass,
+.ground,
+.water {
+  padding: 6px 12px;
+  border-radius: 12px;
+  color: black;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border 0.2s ease, color 0.2s ease;
+}
+
+/* Filter button colors */
+.fire {
+  background-color: #ffcccb;
+}
+.grass {
+  background-color: #90ee90;
+}
+.ground {
+  background-color: #deb887;
+}
+.water {
+  background-color: #add8e6;
+}
+
+/* Active state for filter buttons */
+.fire.active {
+  background-color: #ff6666;
+  border: 2px solid #cc0000;
+  color: white;
+}
+.grass.active {
+  background-color: #33cc33;
+  border: 2px solid #009900;
+  color: white;
+}
+.ground.active {
+  background-color: #cc9966;
+  border: 2px solid #996633;
+  color: white;
+}
+.water.active {
+  background-color: #3399ff;
+  border: 2px solid #0066cc;
+  color: white;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.grid p {
+  text-align: center;
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+.grid-card {
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  transition: transform 0.2s ease;
+}
+
+.grid-card:hover {
+  transform: translateY(-5px);
+}
+
+.grid-card img {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 1rem;
+}
+
+.grid-card h2 {
+  margin: 0.5rem 0;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  text-transform: capitalize;
+}
+
+.grid-card .type span {
+  background-color: #eee;
+  border-radius: 10px;
+  padding: 4px 10px;
+  font-size: 13px;
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+/* Type-specific colors for Pokémon types */
+.grid-card .type span.fire {
+  background-color: #ffcccb;
+}
+.grid-card .type span.grass {
+  background-color: #90ee90;
+}
+.grid-card .type span.ground {
+  background-color: #deb887;
+}
+.grid-card .type span.water {
+  background-color: #add8e6;
+}
+
+.properties {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+  padding: 6px 0;
+  border-top: 1px solid #ccc;
+  justify-items: center;
+}
+
+.properties .proper {
+  background-color: #f1f1f1;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+  text-transform: uppercase;
+  text-align: center;
+}

@@ -1,0 +1,14 @@
+.intro{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    color:black;
+}
+.intro p{
+    font-size: 20px;
+    font-weight: 600;
+    padding: 180px 0 0 49px;
+}
