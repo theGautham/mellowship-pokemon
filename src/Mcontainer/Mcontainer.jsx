@@ -10,6 +10,7 @@ const Mcontainer = () => {
   const [selectedType, setSelectedType] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [team, setTeam] = useState([]);
 
   // Fetch Pokémon data
   useEffect(() => {
@@ -32,14 +33,12 @@ const Mcontainer = () => {
   useEffect(() => {
     let filtered = pokemonList;
 
-    // Filter by search term
     if (searchTerm) {
       filtered = filtered.filter((pokemon) =>
         pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
 
-    // Filter by type
     if (selectedType) {
       filtered = filtered.filter((pokemon) =>
         pokemon.types.some((type) => type.type.name.toLowerCase() === selectedType.toLowerCase())
@@ -49,20 +48,53 @@ const Mcontainer = () => {
     setFilteredPokemon(filtered);
   }, [searchTerm, selectedType, pokemonList]);
 
-  // Handle search input
+ 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
 
-  // Handle type filter click
   const handleTypeFilter = (type) => {
     setSelectedType(type.toLowerCase() === selectedType.toLowerCase() ? '' : type.toLowerCase());
+  };
+
+  // Add Pokémon to team
+  const addToTeam = (pokemon) => {
+    if (team.length < 6 && !team.find((p) => p.id === pokemon.id)) {
+      setTeam([...team, pokemon]);
+    }
+  };
+
+  // Remove Pokémon from team
+  const removeFromTeam = (pokemonId) => {
+    setTeam(team.filter((p) => p.id !== pokemonId));
   };
 
   return (
     <main className="main-container">
       <div className="container-grid">
         <h2>Pokémon Collection</h2>
+
+        <div className="team-section">
+          <h3>Your Team ({team.length}/6)</h3>
+          <div className="analyse-button">
+            <button className='analyse'>Analyse</button>
+          </div>
+          <div className="team-grid">
+            {[...Array(6)].map((_, index) => (
+              <div key={index} className="team-slot">
+                {team[index] ? (
+                  <div className="team-card">
+                    <img src={team[index].sprites.front_default} alt={team[index].name} />
+                    <span>{team[index].name.charAt(0).toUpperCase() + team[index].name.slice(1)}</span>
+                    <button onClick={() => removeFromTeam(team[index].id)}>Remove</button>
+                  </div>
+                ) : (
+                  <span>Empty</span>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
 
         <div className="search-filter">
           <div className="search">
@@ -151,6 +183,11 @@ const Mcontainer = () => {
                       Hlt: {pokemon.stats.find((stat) => stat.stat.name === 'hp').base_stat}
                     </span>
                   </div>
+                </div>
+                <div className="add-button">
+                  <button className="add" onClick={() => addToTeam(pokemon)}>
+                    Add to Team
+                  </button>
                 </div>
               </div>
             ))

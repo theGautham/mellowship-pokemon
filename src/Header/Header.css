@@ -1,52 +1,99 @@
-
 .header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100vw; 
-    height: 115px;   
-    color: #FFFFFF;       
-    margin: 0;              
-    padding: 1rem 2rem;     
-    position: fixed;        
-    top: 0;
-    left: 0;
-    z-index: 999;           
-    background: linear-gradient(to right, #D97706, #F59E0B); 
-    box-shadow: 0 0 12px rgba(220, 6, 38, 0.6); 
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100vw; 
+  height: 115px;   
+  color: #FFFFFF;       
+  margin: 0;              
+  padding: 1rem 2rem;     
+  position: fixed;        
+  top: 0;
+  left: 0;
+  z-index: 999;           
+  background: linear-gradient(to right, #D97706, #F59E0B); 
+  box-shadow: 0 0 12px rgba(220, 6, 38, 0.6); 
 }
-.head-container{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+.head-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.head-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 0 0 425px;
+}
+.head-bottom h1 {
+  font-size: 38px;
+  font-weight: 700;
+  margin: 0;
+}
+.head-bottom span {
+  font-size: 15px;
+  font-weight: 400;
+}
+.head-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 26px 0px 0 300px;
 }
 
-  .head-bottom{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 0 0 0 425px;
+
+/* Tablet: <1024px and ≥768px */
+@media screen and (max-width: 1023px) {
+  .header {
+      height: 100px;
+      padding: 1rem 1.5rem;
   }
-  .head-bottom h1{
-    font-size: 38px;
-    font-weight: 700;
+  .head-bottom {
+      padding: 0 0 0 100px;
   }
-  .head-bottom span{
-    font-size:15px;
-    font-weight: 400;
+  .head-bottom h1 {
+      font-size: 32px;
+  }
+  .head-bottom span {
+      font-size: 14px;
   }
   .head-right {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 26px 0px 0 300px;
-}
+      padding: 20px 0 0 50px;
+  }
   .head-right img {
-    padding: 0 0 30px 40px;
-    height: 100px;
-    width: 108px;
-    cursor: pointer;
+      height: 80px;
+      width: 86px;
+      padding: 0 0 20px 20px;
+  }
+}
+
+/* Mobile: <768px */
+@media screen and (max-width: 767px) {
+  .header {
+      height: 80px;
+      padding: 0.5rem 1rem;
+      flex-direction: row; /* Stack elements vertically */
+  }
+  .head-container {
+      flex-direction: row;
+      justify-content: center;
+  }
+  .head-bottom {
+      padding: 0;
+      align-items: center;
+      text-align: center;
+  }
+  .head-bottom h1 {
+      font-size: 24px;
+  }
+  .head-bottom span {
+      font-size: 12px;
+  }
+  .head-right {
+      padding: 10px 0 0 90px;
+  }
 }
