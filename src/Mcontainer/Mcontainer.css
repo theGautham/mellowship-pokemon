@@ -213,7 +213,7 @@
 
 .add:hover {
   background: var(--button-hover);
-  transform: scale(1.05);
+  transform: scale(1.00);
 }
 
 .team-section {
@@ -282,6 +282,27 @@
 
 .team-card button:hover {
   background: #B91C1C;
+}
+.analyse-button{
+  margin-top: 10px;
+  margin-bottom: 15px;;
+}
+.analyse{
+  height: 35px;
+  width: 80px;
+  border-radius: 5px;
+  background: linear-gradient(to right, var(--button-bg-start), var(--button-bg-end));
+  color: var(--button-text);
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: center;
+}
+.analyse:hover {
+  background: var(--button-hover);
+  transform: scale(1.00);
 }
 
 

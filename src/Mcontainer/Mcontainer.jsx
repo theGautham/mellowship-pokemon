@@ -95,7 +95,7 @@ const Mcontainer = () => {
             ))}
           </div>
         </div>
-
+       
         <div className="search-filter">
           <div className="search">
             <div className="search-bar">
@@ -195,6 +195,7 @@ const Mcontainer = () => {
             <p>No Pokémon found.</p>
           )}
         </div>
+
       </div>
     </main>
   );
