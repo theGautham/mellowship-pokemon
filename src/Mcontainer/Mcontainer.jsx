@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Mcontainer.css';
 import search from '../assets/search.png';
+import pokeball from '../assets/pokeball.png';
 import { fetchPokemon } from '../api/fetchPokemon.js';
 
 const Mcontainer = () => {
@@ -17,6 +18,7 @@ const Mcontainer = () => {
     totalDefense: 0,
     totalHp: 0,
   });
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
   // Fetch Pokémon data
   useEffect(() => {
@@ -76,6 +78,16 @@ const Mcontainer = () => {
     setTeamTotals(totals);
   }, [team]);
 
+  // Handle scroll for back-to-top button visibility
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 200);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
@@ -96,8 +108,27 @@ const Mcontainer = () => {
     setTeam(team.filter((p) => p.id !== pokemonId));
   };
 
+  // Scroll to top
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <main className="main-container">
+      {isLoading && (
+        <div className="loading-container">
+          <img src={pokeball} alt="Loading Pokémon" className="loading-spinner" />
+        </div>
+      )}
+      <button
+        className={`back-to-top ${showBackToTop ? 'show' : ''}`}
+        onClick={scrollToTop}
+        aria-label="Scroll to top"
+        tabIndex={0}
+        onKeyDown={(e) => e.key === 'Enter' && scrollToTop()}
+      >
+        ↑
+      </button>
       <div className="container-grid">
         <h2>Pokémon Collection</h2>
 
@@ -239,9 +270,7 @@ const Mcontainer = () => {
         </div>
 
         <div className="grid">
-          {isLoading ? (
-            <p>Loading Pokémon...</p>
-          ) : error ? (
+          {error ? (
             <p>{error}</p>
           ) : filteredPokemon.length > 0 ? (
             filteredPokemon.map((pokemon) => (
