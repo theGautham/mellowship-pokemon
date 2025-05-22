@@ -11,6 +11,12 @@ const Mcontainer = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [team, setTeam] = useState([]);
+  const [teamTotals, setTeamTotals] = useState({
+    totalAttack: 0,
+    totalSpeed: 0,
+    totalDefense: 0,
+    totalHp: 0,
+  });
 
   // Fetch Pokémon data
   useEffect(() => {
@@ -48,7 +54,28 @@ const Mcontainer = () => {
     setFilteredPokemon(filtered);
   }, [searchTerm, selectedType, pokemonList]);
 
- 
+  // Calculate team totals
+  useEffect(() => {
+    const totals = team.reduce(
+      (acc, pokemon) => {
+        const attack = pokemon.stats.find((stat) => stat.stat.name === 'attack').base_stat;
+        const speed = pokemon.stats.find((stat) => stat.stat.name === 'speed').base_stat;
+        const defense = pokemon.stats.find((stat) => stat.stat.name === 'defense').base_stat;
+        const hp = pokemon.stats.find((stat) => stat.stat.name === 'hp').base_stat;
+
+        return {
+          totalAttack: acc.totalAttack + attack,
+          totalSpeed: acc.totalSpeed + speed,
+          totalDefense: acc.totalDefense + defense,
+          totalHp: acc.totalHp + hp,
+        };
+      },
+      { totalAttack: 0, totalSpeed: 0, totalDefense: 0, totalHp: 0 }
+    );
+
+    setTeamTotals(totals);
+  }, [team]);
+
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
@@ -76,9 +103,6 @@ const Mcontainer = () => {
 
         <div className="team-section">
           <h3>Your Team ({team.length}/6)</h3>
-          <div className="analyse-button">
-            <button className='analyse'>Analyse</button>
-          </div>
           <div className="team-grid">
             {[...Array(6)].map((_, index) => (
               <div key={index} className="team-slot">
@@ -93,6 +117,15 @@ const Mcontainer = () => {
                 )}
               </div>
             ))}
+          </div>
+          <div className="team-totals">
+            <h4>Team Totals</h4>
+            <div className="totals-grid">
+              <span className="total-stat">Atk: {teamTotals.totalAttack}</span>
+              <span className="total-stat">Spd: {teamTotals.totalSpeed}</span>
+              <span className="total-stat">Def: {teamTotals.totalDefense}</span>
+              <span className="total-stat">Hlt: {teamTotals.totalHp}</span>
+            </div>
           </div>
         </div>
        
@@ -152,6 +185,56 @@ const Mcontainer = () => {
             >
               Water
             </span>
+            <span
+              className={`poison ${selectedType === 'poison' ? 'active' : ''}`}
+              onClick={() => handleTypeFilter('poison')}
+              role="button"
+              aria-pressed={selectedType === 'poison'}
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && handleTypeFilter('poison')}
+            >
+              Poison
+            </span>
+            <span
+              className={`flying ${selectedType === 'flying' ? 'active' : ''}`}
+              onClick={() => handleTypeFilter('flying')}
+              role="button"
+              aria-pressed={selectedType === 'flying'}
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && handleTypeFilter('flying')}
+            >
+              Flying
+            </span>
+            <span
+              className={`electric ${selectedType === 'electric' ? 'active' : ''}`}
+              onClick={() => handleTypeFilter('electric')}
+              role="button"
+              aria-pressed={selectedType === 'electric'}
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && handleTypeFilter('electric')}
+            >
+              Electric
+            </span>
+            <span
+              className={`normal ${selectedType === 'normal' ? 'active' : ''}`}
+              onClick={() => handleTypeFilter('normal')}
+              role="button"
+              aria-pressed={selectedType === 'normal'}
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && handleTypeFilter('normal')}
+            >
+              Normal
+            </span>
+            <span
+              className={`fairy ${selectedType === 'fairy' ? 'active' : ''}`}
+              onClick={() => handleTypeFilter('fairy')}
+              role="button"
+              aria-pressed={selectedType === 'fairy'}
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && handleTypeFilter('fairy')}
+            >
+              Fairy
+            </span>
           </div>
         </div>
 
@@ -166,21 +249,27 @@ const Mcontainer = () => {
                 <img src={pokemon.sprites.front_default} alt={pokemon.name} />
                 <h2>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
                 <div className="type">
-                  <span className={pokemon.types.map((type) => type.type.name).join(' ')}>
-                    {pokemon.types.map((type) => type.type.name).join(', ')}
-                  </span>
+                  {pokemon.types && pokemon.types.length > 0 ? (
+                    pokemon.types.map((type, index) => (
+                      <span key={index} className={`type-${type.type.name.toLowerCase()}`}>
+                        {type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1)}
+                      </span>
+                    ))
+                  ) : (
+                    <span className="type-unknown">Unknown</span>
+                  )}
                   <div className="properties">
                     <span className="proper">
-                      Atk: {pokemon.stats.find((stat) => stat.stat.name === 'attack').base_stat}
+                      Atk: {pokemon.stats.find((stat) => stat.stat.name === 'attack')?.base_stat || 'N/A'}
                     </span>
                     <span className="proper">
-                      Spd: {pokemon.stats.find((stat) => stat.stat.name === 'speed').base_stat}
+                      Spd: {pokemon.stats.find((stat) => stat.stat.name === 'speed')?.base_stat || 'N/A'}
                     </span>
                     <span className="proper">
-                      Def: {pokemon.stats.find((stat) => stat.stat.name === 'defense').base_stat}
+                      Def: {pokemon.stats.find((stat) => stat.stat.name === 'defense')?.base_stat || 'N/A'}
                     </span>
                     <span className="proper">
-                      Hlt: {pokemon.stats.find((stat) => stat.stat.name === 'hp').base_stat}
+                      Hlt: {pokemon.stats.find((stat) => stat.stat.name === 'hp')?.base_stat || 'N/A'}
                     </span>
                   </div>
                 </div>
@@ -195,7 +284,6 @@ const Mcontainer = () => {
             <p>No Pokémon found.</p>
           )}
         </div>
-
       </div>
     </main>
   );
