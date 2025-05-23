@@ -19,13 +19,13 @@
     color: var(--intro-text);
     font-family: 'Poppins', sans-serif;
     padding: 20px;
-    margin-top: 80px; /* Matches header height */
+    margin-top: 40px; /* Matches header height */
   }
   
   .intro p {
     font-size: 20px;
     font-weight: 600;
-    padding: 90px 0 0 49px;
+    padding: 40px 0 0 49px;
     color: var(--intro-text);
     margin: 0;
   }

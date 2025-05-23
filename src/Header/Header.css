@@ -68,7 +68,7 @@
   align-items: center;
   font-size: 20px;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: 0.2s ease;
 }
 
 .theme-toggle:hover {
