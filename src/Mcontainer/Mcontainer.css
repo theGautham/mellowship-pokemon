@@ -508,7 +508,8 @@
     height: 70px;
   }
   .type span{
-    margin-right: 4px;
+    margin-right: 5px;
+    margin-left: 2px;
   }
   .loading-spinner {
     width: 40px;
