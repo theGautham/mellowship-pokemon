@@ -6,6 +6,8 @@
   --button-bg-end: #F59E0B;
   --button-text: #FFFFFF;
   --button-hover: #FBBF24;
+  --button-added-bg: #16A34A; /* Added state background */
+  --button-added-hover: #15803D; /* Added state hover background */
   --main-bg: #f5f5f5;
   --search-bg: #ffffff;
   --type-bg: #eee;
@@ -22,6 +24,8 @@
   --button-bg-end: #F59E0B;
   --button-text: #FFFFFF;
   --button-hover: #FBBF24;
+  --button-added-bg: #16A34A; /* Added state background */
+  --button-added-hover: #15803D; /* Added state hover background */
   --main-bg: #1a1a1a;
   --search-bg: #3a3a3a;
   --type-bg: #4a4a4a;
@@ -93,7 +97,7 @@
   background: linear-gradient(to right, var(--button-bg-start), var(--button-bg-end));
   color: var(--button-text);
   border: none;
-  border-radius: 50%;
+  border-radius: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -356,6 +360,15 @@
   transform: scale(1.00);
 }
 
+.add.added {
+  background: var(--button-added-bg);
+  cursor: not-allowed;
+}
+
+.add.added:hover {
+  background: var(--button-added-hover);
+}
+
 .team-section {
   margin-bottom: 2rem;
   padding: 1rem;
@@ -476,7 +489,7 @@
     font-size: 26px;
   }
   .grid {
-    grid-template-columns: repeat(140px, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     padding: 1.5rem;
   }
@@ -522,68 +535,6 @@
   }
 }
 
-@media (min-width: 768px) {
-  .search-filter {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .search-bar {
-    margin-top: 0;
-  }
-}
-
-@media (max-width: 1023px) {
-  .main-container {
-    padding: 8px 16px;
-    margin-top: 100px;
-  }
-  .container-grid h2 {
-    font-size: 26px;
-  }
-  .grid {
-    grid-template-columns: repeat(3, 1fr); /* Fixed invalid repeat(140px, 1fr) */
-    gap: 1.5rem;
-    padding: 1.5rem;
-  }
-  .grid-card img {
-    width: 90px;
-    height: 90px;
-  }
-  .grid-card h2 {
-    font-size: 1rem;
-  }
-  .grid-card .type span {
-    font-size: 11px;
-    padding: 3px 8px;
-  }
-  .properties .proper {
-    font-size: 11px;
-    padding: 5px 10px;
-  }
-  .add {
-    width: 120px;
-    font-size: 13px;
-    padding: 7px 14px;
-  }
-  .team-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .team-card img {
-    width: 70px;
-    height: 70px;
-  }
-  .loading-spinner {
-    width: 40px;
-    height: 40px;
-  }
-  .back-to-top {
-    width: 36px;
-    height: 36px;
-    font-size: 18px;
-  }
-}
-
 @media (max-width: 767px) {
   .main-container {
     padding: 8px 12px;
@@ -611,13 +562,13 @@
   }
   .grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile */
-    grid-template-rows: repeat(25, auto); /* 25 rows, auto-sized */
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(25, auto);
     gap: 1rem;
     padding: 1rem;
   }
   .grid-card {
-    min-width: 0; /* Allow cards to shrink for 2-column layout */
+    min-width: 0;
     padding: 0.6rem;
   }
   .grid-card img {

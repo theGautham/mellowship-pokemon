@@ -301,8 +301,12 @@ const Mcontainer = () => {
                   </div>
                 </div>
                 <div className="add-button">
-                  <button className="add" onClick={() => addToTeam(pokemon)}>
-                    Add to Team
+                  <button
+                    className={`add ${team.find((p) => p.id === pokemon.id) ? 'added' : ''}`}
+                    onClick={() => addToTeam(pokemon)}
+                    disabled={team.find((p) => p.id === pokemon.id)}
+                  >
+                    {team.find((p) => p.id === pokemon.id) ? 'Added to Team' : 'Add to Team'}
                   </button>
                 </div>
               </div>
