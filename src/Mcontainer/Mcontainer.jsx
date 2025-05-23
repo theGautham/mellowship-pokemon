@@ -130,8 +130,6 @@ const Mcontainer = () => {
         ↑
       </button>
       <div className="container-grid">
-        <h2>Pokémon Collection</h2>
-
         <div className="team-section">
           <h3>Your Team ({team.length}/6)</h3>
           <div className="team-grid">
@@ -159,7 +157,7 @@ const Mcontainer = () => {
             </div>
           </div>
         </div>
-       
+        <h2>Pokémon Collection</h2>
         <div className="search-filter">
           <div className="search">
             <div className="search-bar">
