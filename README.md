@@ -1,68 +1,49 @@
-Pokémon Team Builder
-About
-Pokémon Team Builder is a React-based web app that lets users browse, filter, and build a team of up to six Pokémon, displaying key stats and team totals for strategic planning.
-Features
+# 🧩 Pokémon Team Builder
 
-Browse Pokémon: View a grid of Pokémon with their sprites, names, types, and base stats.
-Search and Filter: Search Pokémon by name or filter by type (e.g., Fire, Grass, Water).
-Team Management: Add or remove Pokémon to/from a team (max 6) with real-time stat calculations.
-Responsive Design: Optimized for mobile, tablet, and desktop with a modern UI.
-Dynamic Feedback: Buttons update to "Added to Team" with a visual change when selected.
-Loading State: Spinning Pokéball displayed during data fetching.
-Back-to-Top: Smooth-scroll button for easy navigation.
+**Pokémon Team Builder** is a **React-based** web app that lets users browse, filter, and build a strategic team of up to six Pokémon. It provides key stats and totals to help users plan and evaluate their team composition effectively.
 
-Technologies Used
+---
 
-React: For dynamic, component-based UI.
-JavaScript (JSX): For reusable UI components.
-CSS: Custom styles with light/dark theme support and responsive media queries.
-PokéAPI: External API for fetching Pokémon data.
-Vite: Fast build tool and development server.
-HTML: Core structure of the single-page application.
+## 🌟 Features
 
-Getting Started
-Prerequisites
+- 🔍 **Browse Pokémon**: View a grid of Pokémon with their sprites, names, types, and base stats.
+- 🔎 **Search and Filter**: Quickly search by name or filter Pokémon by type (e.g., Fire, Grass, Water).
+- 🛠️ **Team Management**: Add or remove Pokémon from your team (max 6), with real-time team stat updates.
+- 📱 **Responsive Design**: Optimized for mobile, tablet, and desktop with a sleek, modern UI.
+- ✅ **Dynamic Feedback**: "Add to Team" button changes to "Added to Team" with visual styling.
+- ⚙️ **Loading State**: Animated spinning Pokéball displayed while fetching data.
+- ⬆️ **Back-to-Top Button**: Smooth scroll button for easy navigation.
 
-Node.js: Version 14 or higher.
-npm: Node package manager (comes with Node.js).
-A modern web browser (e.g., Chrome, Firefox).
+---
 
-Installation
+## 🛠️ Technologies Used
 
-Clone the Repository:
+- ⚛️ **React** – Component-based UI
+- ✨ **JavaScript (JSX)** – Functional and reusable UI logic
+- 🎨 **CSS** – Custom styling with responsive media queries and dark/light theme support
+- 🔗 **PokéAPI** – Fetching Pokémon data dynamically
+- ⚡ **Vite** – Blazing fast development server and build tool
+- 🧱 **HTML** – Base structure of the SPA
+
+---
+
+## 🚀 Getting Started
+
+### ✅ Prerequisites
+
+- [Node.js](https://nodejs.org/) (v14 or higher)
+- npm (comes with Node.js)
+- A modern browser (Chrome, Firefox, etc.)
+
+### 📦 Installation
+
+```bash
+# Clone the repository
 git clone https://github.com/theGautham/pokemon-team-builder.git
 cd pokemon-team-builder
 
-
-Install Dependencies:
+# Install dependencies
 npm install
 
-
-Start the Development Server:
+# Start the development server
 npm run dev
-
-
-Open the App:Open your browser and navigate to the URL provided in the terminal (usually http://localhost:5173 for Vite).
-
-
-Running the App
-
-The app fetches Pokémon data from the PokéAPI and displays it in a grid.
-Use the search bar to find Pokémon by name or filter by type using the type buttons.
-Add Pokémon to your team (up to 6) by clicking "Add to Team". The button changes to "Added to Team" when selected.
-View team stats in the "Your Team" section, and remove Pokémon as needed.
-
-Contributing
-Contributions are welcome! To contribute:
-
-Fork the repository.
-Create a new branch: git checkout -b feature/your-feature.
-Make your changes and commit: git commit -m "Add your feature".
-Push to your branch: git push origin feature/your-feature.
-Open a pull request.
-
-Please ensure your code follows the project's coding style and includes relevant tests.
-Issues
-Found a bug or have a feature request? Open an issue on the GitHub Issues page.
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
